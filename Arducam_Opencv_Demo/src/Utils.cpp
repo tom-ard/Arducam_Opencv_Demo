@@ -1,9 +1,19 @@
+#if defined(_WIN32) || defined(_WIN64)
 #include "stdafx.h"
 #include <Windows.h>
-#include "Utils.h"
-#include <time.h>
 #include "arducam_config_parser.h"
 #include "ArduCamlib.h"
+#endif
+
+#if __linux__
+#include <arducam_config_parser.h>
+#include <ArduCamLib.h>
+#include <unistd.h>
+#include <stdlib.h>
+#endif
+
+#include "Utils.h"
+#include <time.h>
 
 bool save_raw = false;
 int color_mode = 0;

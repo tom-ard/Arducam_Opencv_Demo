@@ -1,4 +1,6 @@
+#if defined(_WIN32) || defined(_WIN64)
 #include "stdafx.h"
+#endif
 #include "Arducam.hpp"
 
 bool ArducamCamera::openCamera(std::string fname, int index) {

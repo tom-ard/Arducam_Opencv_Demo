@@ -1,13 +1,13 @@
 // ArduCam_test.cpp : Defines the entry point for the console application.
 //
-#include "stdafx.h"
 #ifdef __linux__
-#include "Arducam_SDK/ArduCamLib.h"
+#include <ArduCamLib.h>
 #include <unistd.h>
 #include <termios.h>
 #endif
 
 #ifdef _WIN32
+#include "stdafx.h"
 #include <Windows.h>
 #include "ArduCamlib.h"
 #include <io.h>

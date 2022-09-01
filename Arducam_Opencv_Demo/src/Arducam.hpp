@@ -1,13 +1,15 @@
 #pragma once
 
-#if defined(linux)
-#include "Arducam_SDK/ArduCamLib.h"
+#if defined(__linux__)
+#include <ArduCamLib.h>
+#include <arducam_config_parser.h>
 #include <unistd.h>
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
 #include <Windows.h>
 #include "ArduCamlib.h"
+#include "arducam_config_parser.h"
 #endif
 
 #include <opencv2/opencv.hpp>
@@ -16,7 +18,6 @@
 #include <iostream>
 #include <thread>
 #include <string>
-#include "arducam_config_parser.h"
 #include "Utils.h"
 #include "Semaphore.hpp"
 
