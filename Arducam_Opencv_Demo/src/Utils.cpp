@@ -95,7 +95,7 @@ bool camera_initFromFile(std::string filename, ArduCamHandle &cameraHandle, Ardu
 				ArduCam_writeSensorReg(cameraHandle, configs[i].params[0], configs[i].params[1]);
 				break;
 			case CONFIG_TYPE_DELAY:
-#ifdef linux
+#ifdef __linux__
 				usleep(1000 * configs[i].params[0]);
 #endif
 #ifdef _WIN32

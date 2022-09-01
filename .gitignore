@@ -2,3 +2,9 @@
 obj/
 bin/
 libs/
+
+build/
+libs_arducam/
+.vscode/
+
+*.zip

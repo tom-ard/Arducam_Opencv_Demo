@@ -1,7 +1,7 @@
 // ArduCam_test.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
-#ifdef linux
+#ifdef __linux__
 #include "Arducam_SDK/ArduCamLib.h"
 #include <unistd.h>
 #include <termios.h>
@@ -27,7 +27,7 @@ using namespace std;
 using namespace cv;
 
 void delay_ms(int mills) {
-#ifdef linux
+#ifdef __linux__
 	usleep(mills * 1000);
 #endif
 #ifdef _WIN32

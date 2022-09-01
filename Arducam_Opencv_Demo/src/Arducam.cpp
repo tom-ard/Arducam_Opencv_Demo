@@ -58,8 +58,8 @@ void ArducamCamera::capture() {
 	std::cout << "Capture thread stopped." << std::endl;
 }
 
-bool ArducamCamera::read(ArduCamOutData* &frameData) {
-	captureSem.wait(1);
+bool ArducamCamera::read(ArduCamOutData* &frameData, int timeout) {
+	captureSem.wait_for(1, timeout);
 
 	Uint32 rtn_val = ArduCam_readImage(handle, frameData);
 	return rtn_val == USB_CAMERA_NO_ERROR;

@@ -31,6 +31,18 @@ public:
 		count--;
 	}
 
+	inline bool wait_for(int tid, int timeout = 1500) {
+		std::unique_lock<std::mutex> lock(mtx);
+		while (count == 0) {
+			//wait on the mutex until notify is called
+			std::cv_status status = cv.wait_for(lock, std::chrono::milliseconds(timeout));
+			if (status == std::cv_status::timeout)
+				return true;
+		}
+		count--;
+		return false;
+	}
+
 	inline void cleanup() {
 		std::unique_lock<std::mutex> lock(mtx);
 		count = 0;

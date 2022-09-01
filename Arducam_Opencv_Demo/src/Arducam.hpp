@@ -31,7 +31,7 @@ public:
 	void start();
 	void stop();
 
-	bool read(ArduCamOutData* &frameData);
+	bool read(ArduCamOutData* &frameData, int timeout = 1500);
 	void returnFrameBuffer();
 
 private:
