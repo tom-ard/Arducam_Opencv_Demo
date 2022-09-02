@@ -45,20 +45,19 @@ function(extract_file filename extract_dir)
 endfunction(extract_file)
 
 if (WIN32) 
-    download_file("https://github.com/glddiv/Arducam_Opencv_Demo/releases/download/v0.1/libs_arducam.zip" "${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam.zip")
-    extract_file("${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam.zip" "${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam")
-    set(ArduCam_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam/arducam/include")
-    set(ArduCam_LIBS "${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam/arducam/lib")
+    download_file("https://github.com/ArduCAM/arducam_ppa/releases/download/v1.0/libs_arducam.zip" "${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam.zip")
+    extract_file("${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam.zip" "${CMAKE_CURRENT_SOURCE_DIR}/libs")
+    set(ArduCam_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/libs/arducam/include")
+    set(ArduCam_LIBS "${CMAKE_CURRENT_SOURCE_DIR}/libs/arducam/lib")
     include_directories(
         ./src
         ${ArduCam_INCLUDE_DIRS}
         ${OpenCV_INCLUDE_DIRS}
     )
-    # link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs_arducam/arducam/lib/x64)
-
+    
     if (${CMAKE_GENERATOR_PLATFORM} STREQUAL "x64")
         target_link_directories(${APP_NAME} PUBLIC ${ArduCam_LIBS}/x64)
-    else(${CMAKE_GENERATOR_PLATFORM} STREQUAL "x86")
+    else(${CMAKE_GENERATOR_PLATFORM} STREQUAL "Win32")
         target_link_directories(${APP_NAME} PUBLIC ${ArduCam_LIBS}/Win32)
     endif()
 
